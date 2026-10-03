@@ -1,492 +1,263 @@
-**# Online Quiz System**
+# Online Quiz System
 
-**## Object Oriented Programming Mini Project**
+A web-based Online Quiz System developed using HTML, CSS and JavaScript.
 
-**A Java-based Online Quiz System developed using core Object-Oriented Programming concepts.**
-
-**The system allows students to register, log in, attempt objective quizzes and view their results. Administrators can manage users, quizzes, questions and results.**
+The system provides separate Student and Admin interfaces for managing quizzes, questions, students and quiz results.
 
 ---
 
-**## Team**
+## Features
 
-| **Member** | **Role** |
-| --- | --- |
-| **Vansh Barange** | **Team Member** |
-| **Dev Kalambe** | **Team Member** |
-| **Swayam Wase** | **Team Member** |
-| **Pooja Umak** | **Team Member** |
+### Student Module
 
-****Section:** DS-C**
+- Student registration
+- Student login
+- Student dashboard
+- View available quizzes
+- Attempt active quizzes
+- Previous and Next question navigation
+- Quiz timer
+- Automatic quiz submission
+- Automatic score calculation
+- Percentage calculation
+- View quiz results
+- View result history
+- View average score
+- Edit student profile
+- Student session protection
+- Logout functionality
 
-****Group:** 5**
+### Admin Module
 
----
-
-**# 1. Project Objective**
-
-**The objective of this project is to develop an Online Quiz System using Java and demonstrate the practical implementation of Object-Oriented Programming concepts.**
-
-**The system provides two major user roles:**
-
-* **Student**
-* **Administrator**
-
-**Students can attempt quizzes and view their results, while administrators manage users, quizzes and questions.**
-
----
-
-**# 2. Modules**
-
-**The system is divided into five major modules.**
-
-**### 1. User Management**
-
-**Responsible for:**
-
-* **Student registration**
-* **Login/authentication**
-* **Logout**
-* **Profile management**
-* **User roles**
-
-**### 2. Quiz Management**
-
-**Responsible for:**
-
-* **Creating quizzes**
-* **Editing quizzes**
-* **Deleting quizzes**
-* **Configuring quiz details**
-* **Adding questions**
-* **Starting quizzes**
-* **Submitting quizzes**
-
-**### 3. Question Management**
-
-**Responsible for:**
-
-* **Creating questions**
-* **Editing questions**
-* **Deleting questions**
-* **Storing questions**
-* **Managing answer options**
-
-**The current implementation uses Multiple Choice Questions (MCQs).**
-
-**### 4. Result Management**
-
-**Responsible for:**
-
-* **Calculating scores**
-* **Calculating percentages**
-* **Storing results**
-* **Displaying student results**
-* **Generating performance information**
-
-**### 5. Admin Panel**
-
-**Provides centralized control over:**
-
-* **Users**
-* **Quizzes**
-* **Questions**
-* **Results**
-* **System statistics**
+- Admin login
+- Admin dashboard
+- View quiz statistics
+- Create quizzes
+- Edit quizzes
+- Activate / deactivate quizzes
+- Delete quizzes
+- Add questions
+- View question bank
+- Edit questions
+- Delete questions
+- View registered students
+- Delete students
+- View quiz results
+- Admin session protection
+- Logout functionality
 
 ---
 
-**# 3. Class Structure**
-
-**## User**
-
-**`User` is an abstract base class shared by Student and Admin.**
-
-**### Attributes**
-
-* **userId**
-* **name**
-* **email**
-* **password**
-* **role**
-
-**### Methods**
-
-* **register()**
-* **login()**
-* **logout()**
-* **updateProfile()**
-* **viewDashboard()**
-
----
-
-**## Student**
-
-**`Student` extends `User`.**
-
-**### Attributes**
-
-* **enrollmentNo**
-* **attemptedQuizzes**
-
-**### Responsibilities**
-
-* **View student dashboard**
-* **Attempt quizzes**
-* **View results**
-
----
-
-**## Admin**
-
-**`Admin` extends `User`.**
-
-**### Attributes**
-
-* **adminId**
-* **managedQuizzes**
-
-**### Responsibilities**
-
-* **Manage users**
-* **Manage quizzes**
-* **Manage questions**
-* **View all results**
-* **View system statistics**
-
----
-
-**## Quiz**
-
-**The `Quiz` class represents a quiz in the system.**
-
-**### Attributes**
-
-* **quizId**
-* **title**
-* **category**
-* **durationMinutes**
-* **totalMarks**
-* **questionList**
-* **isActive**
-
-**### Responsibilities**
-
-* **Create quiz**
-* **Edit quiz**
-* **Delete quiz**
-* **Add questions**
-* **Start quiz**
-* **Submit quiz**
-
----
-
-**## Question**
-
-**`Question` is an abstract class used as the base class for different question types.**
-
-**### Attributes**
-
-* **questionId**
-* **questionText**
-* **marks**
-* **difficulty**
-
-**### Responsibilities**
-
-* **Store question information**
-* **Check answers**
-* **Add questions**
-* **Edit questions**
-* **Delete questions**
-
----
-
-**## MCQQuestion**
-
-**`MCQQuestion` extends `Question`.**
-
-**### Attributes**
-
-* **optionA**
-* **optionB**
-* **optionC**
-* **optionD**
-* **correctOption**
-
-**### Responsibility**
-
-**The `checkAnswer()` method compares the student's selected option with the correct option.**
-
----
-
-**## Result**
-
-**The `Result` class represents the outcome of a student's quiz attempt.**
-
-**### Attributes**
-
-* **resultId**
-* **studentId**
-* **quizId**
-* **scoreObtained**
-* **totalMarks**
-* **percentage**
-* **dateAttempted**
-
-**### Responsibilities**
-
-* **Calculate score**
-* **Calculate percentage**
-* **Store result**
-* **Display result**
-* **Generate performance information**
-
----
-
-**# 4. OOP Concepts Used**
-
-**## Encapsulation**
-
-**Class attributes are kept private and accessed through appropriate methods.**
-
-**Examples:**
-
-```java
-private int userId;
-private String name;
-private String email;
-private String password;
-
-```
-
-**## Inheritance**
-
-**The system uses inheritance to create specialized classes from common base classes.**
-
-```
-User
-├── Student
-└── Admin
-
-```
-
-**and:**
-
-```
-Question
-└── MCQQuestion
-
-```
-
-**This reduces code duplication and represents an "is-a" relationship.**
-
-**## Abstraction**
-
-**User and Question are abstract classes.**
-
-**They define common behavior while allowing subclasses to provide their own implementations.**
-
-**For example:**
-
-```java
-abstract void viewDashboard();
-
-```
-
-**and:**
-
-```java
-abstract boolean checkAnswer(String response);
-
-```
-
-**## Polymorphism**
-
-**Polymorphism allows the same method to behave differently depending on the object.**
-
-**For example:**
-
-```
-User
- ├── Student → viewDashboard()
- └── Admin   → viewDashboard()
-
-```
-
-**Similarly:**
-
-```
-Question
- └── MCQQuestion → checkAnswer()
-
-```
-
-**The project design specifically applies polymorphism to viewDashboard() and checkAnswer().**
-
----
-
-**# 5. System Flow**
-
-**## Student Flow**
-
-```
+## Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript
+- Browser Local Storage
+System Modules
+1. User Management
+
+Handles:
+
+Student registration
+Student login
+Admin login
+Student profile
+User information
+Session management
+2. Quiz Management
+
+Handles:
+
+Quiz creation
+Quiz editing
+Quiz activation/deactivation
+Quiz deletion
+Quiz availability
+3. Question Management
+
+Handles:
+
+Adding questions
+Viewing questions
+Editing questions
+Deleting questions
+Multiple-choice questions
+4. Result Management
+
+Handles:
+
+Score calculation
+Percentage calculation
+Result storage
+Student result history
+Average score
+Admin result viewing
+5. Admin Panel
+
+Provides centralized management of:
+
+Quizzes
+Questions
+Students
+Results
+Dashboard statistics
+Student Workflow
 Student Registration
         ↓
 Student Login
         ↓
 Student Dashboard
         ↓
+View Available Quizzes
+        ↓
 Select Quiz
         ↓
-Start Quiz
-        ↓
-Answer Questions
+Attempt Questions
         ↓
 Submit Quiz
         ↓
 Calculate Score
         ↓
-Generate Result
+Store Result
         ↓
 View Result
-
-```
-
-**## Admin Flow**
-
-```
+Admin Workflow
 Admin Login
-      ↓
+     ↓
 Admin Dashboard
-      ↓
-Manage Users
-      ↓
+     ↓
 Manage Quizzes
-      ↓
+     ↓
 Manage Questions
-      ↓
+     ↓
+Manage Students
+     ↓
 View Results
+Data Storage
 
-```
+The project uses browser localStorage for data persistence.
 
-**The project design specifies that quiz submission passes the answers to Result Management, which evaluates each question through checkAnswer().**
+Important storage items include:
 
----
+students
+currentStudent
+quizzes
+quizResults
+selectedQuizId
+adminLoggedIn
 
-**# 6. Module Interaction**
+This allows the project to operate without a separate database server.
 
-**The major module interaction is:**
+Quiz System
 
-```
-User Management
-       ↓
-Student / Admin
-       ↓
-Quiz Management
-       ↓
-Question Management
-       ↓
-Result Management
+Each quiz contains:
 
-```
+Quiz ID
+Quiz title
+Category
+Duration
+Questions
+Active / inactive status
 
-**The Admin Panel provides centralized access to the management modules.**
+Only active quizzes are available to students.
 
----
+Question System
 
-**# 7. Project Structure**
+The current question system uses multiple-choice questions with four options:
 
-```
-Java-projectOnlineQuizSystem/
-│
-├── README.md
-│
-├── Module-1-User-Management/
-│
-├── Module-2-Quiz-Management/
-│
-└── src/
-    └── onlinequiz/
-        ├── Main.java
-        ├── User.java
-        ├── Student.java
-        ├── Admin.java
-        ├── Quiz.java
-        ├── Question.java
-        ├── MCQQuestion.java
-        └── Result.java
+A
+B
+C
+D
 
-```
+The selected answer is evaluated against the correct option during submission.
 
----
+Result Calculation
 
-**# 8. Technologies**
+After submitting a quiz:
 
-* **Java**
-* **Object-Oriented Programming**
-* **Java Collections**
-* **Java Scanner**
-* **Command Line Interface**
+Score
+   ↓
+Total Questions
+   ↓
+Percentage
+   ↓
+Result Stored
+   ↓
+Student Result History
 
----
+The student's dashboard also calculates the average percentage from their stored results.
 
-**# 9. Compilation**
+Security and Access Control
 
-**Open the terminal inside the src directory.**
+The frontend implements basic session protection using localStorage.
 
-**Compile:**
+Examples:
 
-```bash
-javac onlinequiz/*.java
+Student pages require a student session.
+Quiz access requires a logged-in student and selected quiz.
+Admin pages require an admin session.
+Logout removes the corresponding session information.
 
-```
+Note: This is a frontend academic project. localStorage authentication is suitable for demonstration purposes but is not equivalent to server-side authentication used in production systems.
 
-**Run:**
+How to Run
+Option 1 — Directly in Browser
 
-```bash
-java onlinequiz.Main
+Open:
 
-```
+index.html
 
----
+in a web browser.
 
-**# 10. Learning Outcomes**
+Option 2 — VS Code
 
-**This project demonstrates practical understanding of:**
+Open the project folder in VS Code and use a local development server such as Live Server.
 
-* **Classes and objects**
-* **Constructors**
-* **Access modifiers**
-* **Encapsulation**
-* **Inheritance**
-* **Abstract classes**
-* **Method overriding**
-* **Polymorphism**
-* **Collections**
-* **Exception/input handling**
-* **Modular software design**
+Then open:
 
----
+index.html
+Demo Admin Account
+Email: admin@gmail.com
+Password: admin123
 
-**# 11. Future Scope**
+Students can also create their own account using the registration form.
 
-**Possible future improvements include:**
+Project Objective
 
-* **Database integration**
-* **Graphical user interface**
-* **Web-based frontend**
-* **Secure authentication**
-* **Additional question types**
-* **Persistent result storage**
-* **Advanced analytics**
-* **Randomized questions**
-* **Online deployment**
+The objective of this project is to develop an interactive online examination platform that demonstrates:
 
----
+User management
+Quiz management
+Question management
+Result management
+Role-based interfaces
+JavaScript programming
+DOM manipulation
+Local data persistence
+Client-side validation
+Basic session management
+Future Improvements
 
-**# 12. Conclusion**
+Possible future enhancements include:
 
-**The Online Quiz System demonstrates how Object-Oriented Programming principles can be applied to develop a modular quiz management application.**
+Backend server
+SQL database
+Secure password hashing
+JWT/session-based authentication
+Question randomization
+Multiple question types
+Password reset
+Admin analytics
+Leaderboard
+Detailed performance charts
+Cloud deployment
+Responsive mobile improvements
+Author
 
-**The system separates user management, quiz management, question management, result management and administration into logical components, making the project easier to understand, maintain and extend.**
+Swayam Vase
+
+CSE (Data Science)
+
+Online Quiz System Project

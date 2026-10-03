@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Online Quiz System</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <div class="logo">
+                📝
+            </div>
+
+            <h1>
+                Online Quiz System
+            </h1>
+
+            <p class="subtitle">
+                Test your knowledge. Track your progress.
+            </p>
+
+
+            <!-- =========================
+                 LOGIN FORM
+            ========================== -->
+
+            <form id="loginForm">
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="role">
+                        Login As
+                    </label>
+
+                    <select id="role">
+
+                        <option value="student">
+                            Student
+                        </option>
+
+                        <option value="admin">
+                            Administrator
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-button">
+
+                    Login
+
+                </button>
+
+            </form>
+
+
+            <p
+                id="loginMessage"
+                class="login-message">
+            </p>
+
+
+            <!-- =========================
+                 REGISTRATION
+            ========================== -->
+
+            <div class="register-section">
+
+                <p>
+                    New student?
+                </p>
+
+                <button
+                    type="button"
+                    class="admin-secondary-button"
+                    onclick="showRegisterForm()">
+
+                    Register
+
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 REGISTRATION FORM
+            ========================== -->
+
+            <div
+                id="registerFormContainer"
+                style="display: none;">
+
+                <h2>
+                    Student Registration
+                </h2>
+
+
+                <form id="registerForm">
+
+
+                    <div class="input-group">
+
+                        <label for="registerName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="registerName"
+                            placeholder="Enter your name"
+                            required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="registerEmail">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="registerEmail"
+                            placeholder="Enter your email"
+                            required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="registerPassword">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            placeholder="Create a password"
+                            required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="registerEnrollment">
+                            Enrollment Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="registerEnrollment"
+                            placeholder="Enter enrollment number"
+                            required>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="login-button">
+
+                        Create Account
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="admin-secondary-button"
+                        onclick="hideRegisterForm()">
+
+                        Back to Login
+
+                    </button>
+
+                </form>
+
+
+                <p
+                    id="registerMessage"
+                    class="login-message">
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/login.js"></script>
+
+</body>
+
+</html>

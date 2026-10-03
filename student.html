@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <div class="dashboard">
+
+
+        <!-- ========================= -->
+        <!-- SIDEBAR -->
+        <!-- ========================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                📝
+
+                <span>
+                    Quiz System
+                </span>
+
+            </div>
+
+
+            <nav>
+
+                <a
+                    href="#"
+                    class="active"
+                    onclick="showStudentSection('dashboardSection', this); return false;">
+
+                    🏠 Dashboard
+
+                </a>
+
+
+                <a
+                    href="#"
+                    onclick="showStudentSection('quizSection', this); return false;">
+
+                    🧠 Available Quizzes
+
+                </a>
+
+
+                <a
+                    href="#"
+                    onclick="showStudentSection('resultsSection', this); return false;">
+
+                    📊 My Results
+
+                </a>
+
+
+                <a
+                    href="#"
+                    onclick="showStudentSection('profileSection', this); return false;">
+
+                    👤 Profile
+
+                </a>
+
+            </nav>
+
+
+            <button
+                class="logout-button"
+                onclick="logout()">
+
+                🚪 Logout
+
+            </button>
+
+        </aside>
+
+
+
+        <!-- ========================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ========================= -->
+
+        <main class="main-content">
+
+
+            <!-- ========================= -->
+            <!-- DASHBOARD SECTION -->
+            <!-- ========================= -->
+
+            <section
+                id="dashboardSection"
+                class="student-section">
+
+
+                <header class="topbar">
+
+                    <div>
+
+                        <h1>
+                            Student Dashboard
+                        </h1>
+
+                        <p>
+                            Welcome back,
+                            <strong id="studentWelcomeName">
+                                Student
+                            </strong>
+                            👋
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="profile-circle"
+                        id="studentProfileInitial">
+
+                        S
+
+                    </div>
+
+                </header>
+
+
+
+                <!-- ========================= -->
+                <!-- STATISTICS -->
+                <!-- ========================= -->
+
+                <section class="stats">
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            📝
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Available Quizzes
+                            </h3>
+
+                            <p id="availableQuizCount">
+                                0
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            🎯
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Quizzes Attempted
+                            </h3>
+
+                            <p id="attemptedQuizCount">
+                                0
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            🏆
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Average Score
+                            </h3>
+
+                            <p id="studentAverageScore">
+                                0%
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+
+                <!-- ========================= -->
+                <!-- DASHBOARD QUIZZES -->
+                <!-- ========================= -->
+
+                <section class="section">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>
+                                Available Quizzes
+                            </h2>
+
+                            <p>
+                                Choose a quiz and test your knowledge.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="dashboardQuizGrid"
+                        class="quiz-grid">
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ========================= -->
+                <!-- RECENT RESULTS -->
+                <!-- ========================= -->
+
+                <section class="section">
+
+                    <div class="section-header">
+
+                        <h2>
+                            Recent Results
+                        </h2>
+
+                    </div>
+
+
+                    <div
+                        id="recentResultsContainer"
+                        class="result-table">
+
+                    </div>
+
+                </section>
+
+
+            </section>
+
+
+
+            <!-- ========================= -->
+            <!-- AVAILABLE QUIZZES -->
+            <!-- ========================= -->
+
+            <section
+                id="quizSection"
+                class="student-section"
+                style="display:none;">
+
+
+                <header class="topbar">
+
+                    <div>
+
+                        <h1>
+                            Available Quizzes
+                        </h1>
+
+                        <p>
+                            Select a quiz to begin.
+                        </p>
+
+                    </div>
+
+                </header>
+
+
+                <section class="section">
+
+                    <div
+                        id="quizGrid"
+                        class="quiz-grid">
+
+                    </div>
+
+                </section>
+
+
+            </section>
+
+
+
+            <!-- ========================= -->
+            <!-- MY RESULTS -->
+            <!-- ========================= -->
+
+            <section
+                id="resultsSection"
+                class="student-section"
+                style="display:none;">
+
+
+                <header class="topbar">
+
+                    <div>
+
+                        <h1>
+                            My Results
+                        </h1>
+
+                        <p>
+                            View your quiz performance.
+                        </p>
+
+                    </div>
+
+                </header>
+
+
+                <section class="section">
+
+
+                    <div
+                        id="studentResultsContainer"
+                        class="result-table">
+
+                    </div>
+
+
+                </section>
+
+
+            </section>
+
+
+
+            <!-- ========================= -->
+            <!-- PROFILE -->
+            <!-- ========================= -->
+
+            <section
+                id="profileSection"
+                class="student-section"
+                style="display:none;">
+
+
+                <header class="topbar">
+
+                    <div>
+
+                        <h1>
+                            My Profile
+                        </h1>
+
+                        <p>
+                            View and manage your account information.
+                        </p>
+
+                    </div>
+
+                </header>
+
+
+                <section class="section">
+
+
+                    <!-- PROFILE CARD -->
+
+                    <div class="profile-card">
+
+
+                        <div class="profile-card-header">
+
+                            <div
+                                class="profile-large-circle"
+                                id="profileLargeInitial">
+
+                                S
+
+                            </div>
+
+
+                            <div>
+
+                                <h2
+                                    id="profileName">
+
+                                    Student
+
+                                </h2>
+
+                                <p>
+                                    Student Account
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- PROFILE DETAILS -->
+
+                        <div class="profile-details">
+
+
+                            <div class="profile-detail">
+
+                                <span>
+                                    Name
+                                </span>
+
+                                <strong
+                                    id="profileNameDetail">
+
+                                    -
+
+                                </strong>
+
+                            </div>
+
+
+
+                            <div class="profile-detail">
+
+                                <span>
+                                    Email
+                                </span>
+
+                                <strong
+                                    id="profileEmail">
+
+                                    -
+
+                                </strong>
+
+                            </div>
+
+
+
+                            <div class="profile-detail">
+
+                                <span>
+                                    Enrollment Number
+                                </span>
+
+                                <strong
+                                    id="profileEnrollment">
+
+                                    -
+
+                                </strong>
+
+                            </div>
+
+
+
+                            <div class="profile-detail">
+
+                                <span>
+                                    Account Type
+                                </span>
+
+                                <strong>
+                                    Student
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- EDIT PROFILE BUTTON -->
+
+                        <div class="profile-actions">
+
+                            <button
+                                type="button"
+                                onclick="showEditProfile()">
+
+                                ✏️ Edit Profile
+
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- ========================= -->
+                    <!-- EDIT PROFILE FORM -->
+                    <!-- ========================= -->
+
+                    <div
+                        id="editProfileContainer"
+                        class="profile-card"
+                        style="display:none; margin-top:20px;">
+
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <h2>
+                                    Edit Profile
+                                </h2>
+
+                                <p>
+                                    Update your account information.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <form
+                            id="editProfileForm">
+
+
+                            <!-- NAME -->
+
+                            <div class="form-group">
+
+                                <label for="editProfileName">
+                                    Full Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="editProfileName"
+                                    placeholder="Enter your name"
+                                    required>
+
+                            </div>
+
+
+
+                            <!-- EMAIL -->
+
+                            <div class="form-group">
+
+                                <label for="editProfileEmail">
+                                    Email
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="editProfileEmail"
+                                    readonly>
+
+                            </div>
+
+
+
+                            <!-- ENROLLMENT -->
+
+                            <div class="form-group">
+
+                                <label for="editProfileEnrollment">
+                                    Enrollment Number
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="editProfileEnrollment"
+                                    placeholder="Enter enrollment number"
+                                    required>
+
+                            </div>
+
+
+
+                            <!-- MESSAGE -->
+
+                            <p
+                                id="editProfileMessage"
+                                style="margin-top:10px;">
+                            </p>
+
+
+
+                            <!-- BUTTONS -->
+
+                            <div class="profile-actions">
+
+                                <button
+                                    type="submit">
+
+                                    💾 Save Changes
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="hideEditProfile()">
+
+                                    Cancel
+
+                                </button>
+
+                            </div>
+
+
+                        </form>
+
+
+                    </div>
+
+
+                </section>
+
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+
+    <!-- ========================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================= -->
+
+    <script src="js/student.js"></script>
+
+    <script>
+        // =========================
+        // STUDENT LOGIN PROTECTION
+        // =========================
+
+        const currentStudent =
+            localStorage.getItem("currentStudent");
+
+        if (!currentStudent) {
+
+            alert("Please login as a student first.");
+
+            window.location.href = "index.html";
+
+        }
+    </script>
+
+    <script>
+
+        // =========================
+        // STUDENT SECTION NAVIGATION
+        // =========================
+
+        function showStudentSection(
+            sectionId,
+            clickedLink
+        ) {
+
+            const sections =
+                document.querySelectorAll(
+                    ".student-section"
+                );
+
+
+            sections.forEach(
+                function(section) {
+
+                    section.style.display =
+                        "none";
+
+                }
+            );
+
+
+            const selectedSection =
+                document.getElementById(
+                    sectionId
+                );
+
+
+            if (selectedSection) {
+
+                selectedSection.style.display =
+                    "block";
+
+            }
+
+
+            const navLinks =
+                document.querySelectorAll(
+                    ".sidebar nav a"
+                );
+
+
+            navLinks.forEach(
+                function(link) {
+
+                    link.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            if (clickedLink) {
+
+                clickedLink.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            // Refresh data
+
+            if (
+                typeof loadStudentDashboard ===
+                "function"
+            ) {
+
+                loadStudentDashboard();
+
+            }
+
+        }
+
+
+        // =========================
+        // SHOW EDIT PROFILE
+        // =========================
+
+        function showEditProfile() {
+
+            const student =
+                JSON.parse(
+                    localStorage.getItem(
+                        "currentStudent"
+                    )
+                );
+
+
+            if (!student) {
+
+                alert(
+                    "Student session not found. Please login again."
+                );
+
+                return;
+
+            }
+
+
+            const container =
+                document.getElementById(
+                    "editProfileContainer"
+                );
+
+
+            const nameInput =
+                document.getElementById(
+                    "editProfileName"
+                );
+
+
+            const emailInput =
+                document.getElementById(
+                    "editProfileEmail"
+                );
+
+
+            const enrollmentInput =
+                document.getElementById(
+                    "editProfileEnrollment"
+                );
+
+
+            if (!container) {
+                return;
+            }
+
+
+            nameInput.value =
+                student.name || "";
+
+
+            emailInput.value =
+                student.email || "";
+
+
+            enrollmentInput.value =
+                student.enrollmentNo || "";
+
+
+            container.style.display =
+                "block";
+
+
+            container.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+
+        // =========================
+        // HIDE EDIT PROFILE
+        // =========================
+
+        function hideEditProfile() {
+
+            const container =
+                document.getElementById(
+                    "editProfileContainer"
+                );
+
+
+            if (container) {
+
+                container.style.display =
+                    "none";
+
+            }
+
+
+            const message =
+                document.getElementById(
+                    "editProfileMessage"
+                );
+
+
+            if (message) {
+
+                message.textContent =
+                    "";
+
+            }
+
+        }
+
+
+        // =========================
+        // SAVE EDITED PROFILE
+        // =========================
+
+        const editProfileForm =
+            document.getElementById(
+                "editProfileForm"
+            );
+
+
+        if (editProfileForm) {
+
+            editProfileForm.addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    const student =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "currentStudent"
+                            )
+                        );
+
+
+                    const message =
+                        document.getElementById(
+                            "editProfileMessage"
+                        );
+
+
+                    if (!student) {
+
+                        message.textContent =
+                            "Student session not found. Please login again.";
+
+                        message.style.color =
+                            "red";
+
+                        return;
+
+                    }
+
+
+                    const name =
+                        document
+                            .getElementById(
+                                "editProfileName"
+                            )
+                            .value
+                            .trim();
+
+
+                    const enrollmentNo =
+                        document
+                            .getElementById(
+                                "editProfileEnrollment"
+                            )
+                            .value
+                            .trim();
+
+
+                    // VALIDATION
+
+                    if (!name || !enrollmentNo) {
+
+                        message.textContent =
+                            "Name and enrollment number are required.";
+
+                        message.style.color =
+                            "red";
+
+                        return;
+
+                    }
+
+
+                    // GET ALL STUDENTS
+
+                    let students = [];
+
+                    const storedStudents =
+                        localStorage.getItem(
+                            "students"
+                        );
+
+
+                    if (storedStudents) {
+
+                        try {
+
+                            students =
+                                JSON.parse(
+                                    storedStudents
+                                );
+
+
+                            if (
+                                !Array.isArray(
+                                    students
+                                )
+                            ) {
+
+                                students = [];
+
+                            }
+
+                        } catch (error) {
+
+                            console.error(
+                                "Could not read students:",
+                                error
+                            );
+
+                            students = [];
+
+                        }
+
+                    }
+
+
+                    // CHECK DUPLICATE ENROLLMENT
+
+                    const enrollmentExists =
+                        students.some(
+                            function(existingStudent) {
+
+                                return (
+                                    String(
+                                        existingStudent.id
+                                    ) !==
+                                    String(
+                                        student.id
+                                    ) &&
+                                    existingStudent.enrollmentNo ===
+                                    enrollmentNo
+                                );
+
+                            }
+                        );
+
+
+                    if (enrollmentExists) {
+
+                        message.textContent =
+                            "This enrollment number is already registered.";
+
+                        message.style.color =
+                            "red";
+
+                        return;
+
+                    }
+
+
+                    // UPDATE CURRENT STUDENT
+
+                    student.name =
+                        name;
+
+                    student.enrollmentNo =
+                        enrollmentNo;
+
+
+                    // UPDATE STUDENT LIST
+
+                    const studentIndex =
+                        students.findIndex(
+                            function(existingStudent) {
+
+                                return (
+                                    String(
+                                        existingStudent.id
+                                    ) ===
+                                    String(
+                                        student.id
+                                    )
+                                );
+
+                            }
+                        );
+
+
+                    if (studentIndex !== -1) {
+
+                        students[
+                            studentIndex
+                        ].name =
+                            name;
+
+                        students[
+                            studentIndex
+                        ].enrollmentNo =
+                            enrollmentNo;
+
+                    }
+
+
+                    // SAVE DATA
+
+                    localStorage.setItem(
+                        "students",
+                        JSON.stringify(
+                            students
+                        )
+                    );
+
+
+                    localStorage.setItem(
+                        "currentStudent",
+                        JSON.stringify(
+                            student
+                        )
+                    );
+
+
+                    // SUCCESS
+
+                    message.textContent =
+                        "Profile updated successfully.";
+
+                    message.style.color =
+                        "green";
+
+
+                    // REFRESH DASHBOARD
+
+                    if (
+                        typeof loadStudentDashboard ===
+                        "function"
+                    ) {
+
+                        loadStudentDashboard();
+
+                    }
+
+
+                    setTimeout(
+                        function() {
+
+                            hideEditProfile();
+
+                        },
+                        1000
+                    );
+
+                }
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>

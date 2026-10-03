@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Take Quiz</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="quiz-page">
+
+        <!-- Top Bar -->
+        <header class="quiz-topbar">
+
+            <div>
+                <h1 id="quizTitle">Java OOP Basics</h1>
+                <p id="questionNumber">Question 1 of 5</p>
+            </div>
+
+            <div class="timer-box">
+                ⏱
+                <span id="timer">10:00</span>
+            </div>
+
+        </header>
+
+
+        <!-- Quiz Content -->
+        <main class="quiz-container">
+
+            <div class="question-card">
+
+                <h2 id="questionText">
+                    What is the main purpose of encapsulation in Java?
+                </h2>
+
+
+                <div id="optionsContainer">
+
+                    <label class="option">
+                        <input type="radio" name="answer" value="A">
+                        <span id="optionA">
+                            To hide data and control access
+                        </span>
+                    </label>
+
+
+                    <label class="option">
+                        <input type="radio" name="answer" value="B">
+                        <span id="optionB">
+                            To create multiple objects
+                        </span>
+                    </label>
+
+
+                    <label class="option">
+                        <input type="radio" name="answer" value="C">
+                        <span id="optionC">
+                            To execute code faster
+                        </span>
+                    </label>
+
+
+                    <label class="option">
+                        <input type="radio" name="answer" value="D">
+                        <span id="optionD">
+                            To remove classes
+                        </span>
+                    </label>
+
+                </div>
+
+
+                <!-- Navigation -->
+                <div class="quiz-navigation">
+
+                    <button
+                        id="previousButton"
+                        class="secondary-button">
+                        ← Previous
+                    </button>
+
+
+                    <button
+                        id="nextButton"
+                        class="primary-button">
+                        Next →
+                    </button>
+
+
+                    <button
+                        id="submitButton"
+                        class="submit-button"
+                        style="display: none;">
+                        Submit Quiz
+                    </button>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/quiz.js"></script>
+
+    <script>
+        // =========================
+        // QUIZ ACCESS PROTECTION
+        // =========================
+
+        const quizStudent =
+            localStorage.getItem("currentStudent");
+
+        const selectedQuizId =
+            localStorage.getItem("selectedQuizId");
+
+        if (!quizStudent) {
+
+            alert("Please login as a student first.");
+
+            window.location.href = "index.html";
+
+        }
+        else if (!selectedQuizId) {
+
+            alert("Please select a quiz first.");
+
+            window.location.href = "student.html";
+
+        }
+    </script>
+
+</body>
+
+</html>

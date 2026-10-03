@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Online Quiz System - Admin Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <!-- ========================= -->
+    <!-- ADMIN DASHBOARD -->
+    <!-- ========================= -->
+
+    <div class="admin-dashboard">
+
+
+        <!-- ========================= -->
+        <!-- SIDEBAR -->
+        <!-- ========================= -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+
+                <h2>Online Quiz</h2>
+
+                <span>Admin Panel</span>
+
+            </div>
+
+
+            <nav class="admin-nav">
+
+                <a
+                    href="#"
+                    onclick="showSection('dashboard')">
+
+                    Dashboard
+
+                </a>
+
+
+                <a
+                    href="#"
+                    onclick="showSection('quizManagement')">
+
+                    Quiz Management
+
+                </a>
+
+
+                <a
+                    href="#"
+                    onclick="showSection('questionManagement')">
+
+                    Question Management
+
+                </a>
+
+
+                <a
+                    href="#"
+                    onclick="showSection('userManagement')">
+
+                    Users
+
+                </a>
+
+
+                <a
+                    href="#"
+                    onclick="showSection('resultManagement')">
+
+                    Results
+
+                </a>
+
+            </nav>
+
+
+            <button
+                class="admin-logout"
+                onclick="logoutAdmin()">
+
+                Logout
+
+            </button>
+
+        </aside>
+
+
+
+        <!-- ========================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ========================= -->
+
+        <main class="admin-main">
+
+
+            <!-- ========================= -->
+            <!-- DASHBOARD -->
+            <!-- ========================= -->
+
+            <section
+                id="dashboard"
+                class="admin-section">
+
+                <div class="admin-header">
+
+                    <div>
+
+                        <h1>Admin Dashboard</h1>
+
+                        <p>
+                            Manage quizzes, questions,
+                            students and results.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ========================= -->
+                <!-- STATISTICS -->
+                <!-- ========================= -->
+
+                <div class="admin-stats">
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-title">
+                            Total Quizzes
+                        </span>
+
+                        <strong id="totalQuizzes">
+                            0
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-title">
+                            Total Questions
+                        </span>
+
+                        <strong id="totalQuestions">
+                            0
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-title">
+                            Total Students
+                        </span>
+
+                        <strong id="totalStudents">
+                            0
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-title">
+                            Total Attempts
+                        </span>
+
+                        <strong id="totalAttempts">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ========================= -->
+            <!-- QUIZ MANAGEMENT -->
+            <!-- ========================= -->
+
+            <section
+                id="quizManagement"
+                class="admin-section"
+                style="display:none;">
+
+                <div class="admin-header">
+
+                    <div>
+
+                        <h1>Quiz Management</h1>
+
+                        <p>
+                            Create and manage quizzes.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="admin-primary-button"
+                        onclick="showCreateQuiz()">
+
+                        + Create Quiz
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="admin-table-container">
+
+                    <div class="admin-table-header">
+
+                        <span>ID</span>
+
+                        <span>Quiz</span>
+
+                        <span>Category</span>
+
+                        <span>Questions</span>
+
+                        <span>Duration</span>
+
+                        <span>Status</span>
+
+                        <span>Actions</span>
+
+                    </div>
+
+
+                    <div
+                        id="quizTableBody">
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ========================= -->
+            <!-- QUESTION MANAGEMENT -->
+            <!-- ========================= -->
+
+            <section
+                id="questionManagement"
+                class="admin-section"
+                style="display:none;">
+
+                <div class="admin-header">
+
+                    <div>
+
+                        <h1>Question Management</h1>
+
+                        <p>
+                            Add, view, edit and delete
+                            quiz questions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="admin-management-grid">
+
+
+                    <div class="admin-management-card">
+
+                        <h3>
+                            Add Question
+                        </h3>
+
+                        <p>
+                            Add a new MCQ to an existing quiz.
+                        </p>
+
+                        <button
+                            class="admin-primary-button"
+                            onclick="addQuestion()">
+
+                            Add Question
+
+                        </button>
+
+                    </div>
+
+
+
+                    <div class="admin-management-card">
+
+                        <h3>
+                            Question Bank
+                        </h3>
+
+                        <p>
+                            View and manage questions
+                            inside your quizzes.
+                        </p>
+
+                        <button
+                            class="admin-secondary-button"
+                            onclick="viewQuestions()">
+
+                            View Question Bank
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ========================= -->
+            <!-- USER MANAGEMENT -->
+            <!-- ========================= -->
+
+            <section
+                id="userManagement"
+                class="admin-section"
+                style="display:none;">
+
+                <div class="admin-header">
+
+                    <div>
+
+                        <h1>User Management</h1>
+
+                        <p>
+                            Manage registered students.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="user-summary">
+
+                    <div>
+
+                        <span
+                            class="user-number"
+                            id="registeredStudentCount">
+
+                            0
+
+                        </span>
+
+
+                        <span>
+                            Registered Students
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        class="admin-secondary-button"
+                        onclick="manageUsers()">
+
+                        Manage Users
+
+                    </button>
+
+                </div>
+
+
+
+                <div
+                    id="usersTableContainer"
+                    class="results-table-container">
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ========================= -->
+            <!-- RESULT MANAGEMENT -->
+            <!-- ========================= -->
+
+            <section
+                id="resultManagement"
+                class="admin-section"
+                style="display:none;">
+
+                <div class="admin-header">
+
+                    <div>
+
+                        <h1>Result Management</h1>
+
+                        <p>
+                            View student quiz attempts
+                            and results.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="admin-stats">
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-title">
+                            Attempts
+                        </span>
+
+                        <strong id="resultAttempts">
+                            0
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-title">
+                            Average Score
+                        </span>
+
+                        <strong id="averageScore">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-title">
+                            Passed
+                        </span>
+
+                        <strong id="passedResults">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <button
+                    class="admin-primary-button"
+                    onclick="viewResults()">
+
+                    View All Results
+
+                </button>
+
+
+
+                <div
+                    id="resultsTableContainer"
+                    class="results-table-container">
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+
+    <!-- ========================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================= -->
+
+    <script src="js/admin.js"></script>
+
+    <script>
+        // =========================
+        // ADMIN LOGIN PROTECTION
+        // =========================
+
+        const adminLoggedIn =
+            localStorage.getItem("adminLoggedIn");
+
+        if (adminLoggedIn !== "true") {
+
+            alert("Please login as admin first.");
+
+            window.location.href = "index.html";
+
+        }
+    </script>
+
+    <script>
+
+        // =========================
+        // SECTION NAVIGATION
+        // =========================
+
+        function showSection(sectionId) {
+
+            const sections =
+                document.querySelectorAll(
+                    ".admin-section"
+                );
+
+
+            sections.forEach(function(section) {
+
+                section.style.display =
+                    "none";
+
+            });
+
+
+            const selectedSection =
+                document.getElementById(
+                    sectionId
+                );
+
+
+            if (selectedSection) {
+
+                selectedSection.style.display =
+                    "block";
+
+            }
+
+
+            // Refresh data when opening sections
+
+            if (
+                sectionId ===
+                "dashboard"
+            ) {
+
+                updateAdminStatistics();
+
+            }
+
+
+            if (
+                sectionId ===
+                "quizManagement"
+            ) {
+
+                displayQuizTable();
+
+            }
+
+
+            if (
+                sectionId ===
+                "userManagement"
+            ) {
+
+                updateStudentCount();
+
+            }
+
+
+            if (
+                sectionId ===
+                "resultManagement"
+            ) {
+
+                updateAdminStatistics();
+
+            }
+
+        }
+
+
+        // Show dashboard first
+
+        showSection("dashboard");
+
+    </script>
+
+</body>
+
+</html>

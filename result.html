@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quiz Result</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="result-page">
+
+        <div class="result-card">
+
+            <div class="result-icon">
+                🏆
+            </div>
+
+            <h1>Quiz Completed!</h1>
+
+            <p class="result-subtitle">
+                Here is your quiz result.
+            </p>
+
+
+            <div class="score-circle">
+
+                <span id="percentage">
+                    0%
+                </span>
+
+            </div>
+
+
+            <div class="result-details">
+
+                <div class="result-detail">
+                    <span>Score</span>
+                    <strong id="score">0 / 0</strong>
+                </div>
+
+
+                <div class="result-detail">
+                    <span>Percentage</span>
+                    <strong id="percentageText">0%</strong>
+                </div>
+
+
+                <div class="result-detail">
+                    <span>Status</span>
+                    <strong id="status">-</strong>
+                </div>
+
+            </div>
+
+
+            <div class="result-actions">
+
+                <button
+                    class="primary-button"
+                    onclick="goToDashboard()">
+                    Back to Dashboard
+                </button>
+
+
+                <button
+                    class="secondary-button"
+                    onclick="retakeQuiz()">
+                    Retake Quiz
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const score =
+            Number(localStorage.getItem("quizScore")) || 0;
+
+        const total =
+            Number(localStorage.getItem("quizTotal")) || 0;
+
+        const percentage =
+            Number(localStorage.getItem("quizPercentage")) || 0;
+
+
+        document.getElementById("score").textContent =
+            score + " / " + total;
+
+
+        document.getElementById("percentage").textContent =
+            percentage + "%";
+
+
+        document.getElementById("percentageText").textContent =
+            percentage + "%";
+
+
+        const status =
+            document.getElementById("status");
+
+
+        if (percentage >= 40) {
+
+            status.textContent = "Passed";
+            status.style.color = "#198754";
+
+        } else {
+
+            status.textContent = "Failed";
+            status.style.color = "#dc3545";
+
+        }
+
+
+        function goToDashboard() {
+
+            window.location.href =
+                "student.html";
+
+        }
+
+
+        function retakeQuiz() {
+
+            window.location.href =
+                "quiz.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
