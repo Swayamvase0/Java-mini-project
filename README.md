@@ -1,0 +1,492 @@
+**# Online Quiz System**
+
+**## Object Oriented Programming Mini Project**
+
+**A Java-based Online Quiz System developed using core Object-Oriented Programming concepts.**
+
+**The system allows students to register, log in, attempt objective quizzes and view their results. Administrators can manage users, quizzes, questions and results.**
+
+---
+
+**## Team**
+
+| **Member** | **Role** |
+| --- | --- |
+| **Vansh Barange** | **Team Member** |
+| **Dev Kalambe** | **Team Member** |
+| **Swayam Wase** | **Team Member** |
+| **Pooja Umak** | **Team Member** |
+
+****Section:** DS-C**
+
+****Group:** 5**
+
+---
+
+**# 1. Project Objective**
+
+**The objective of this project is to develop an Online Quiz System using Java and demonstrate the practical implementation of Object-Oriented Programming concepts.**
+
+**The system provides two major user roles:**
+
+* **Student**
+* **Administrator**
+
+**Students can attempt quizzes and view their results, while administrators manage users, quizzes and questions.**
+
+---
+
+**# 2. Modules**
+
+**The system is divided into five major modules.**
+
+**### 1. User Management**
+
+**Responsible for:**
+
+* **Student registration**
+* **Login/authentication**
+* **Logout**
+* **Profile management**
+* **User roles**
+
+**### 2. Quiz Management**
+
+**Responsible for:**
+
+* **Creating quizzes**
+* **Editing quizzes**
+* **Deleting quizzes**
+* **Configuring quiz details**
+* **Adding questions**
+* **Starting quizzes**
+* **Submitting quizzes**
+
+**### 3. Question Management**
+
+**Responsible for:**
+
+* **Creating questions**
+* **Editing questions**
+* **Deleting questions**
+* **Storing questions**
+* **Managing answer options**
+
+**The current implementation uses Multiple Choice Questions (MCQs).**
+
+**### 4. Result Management**
+
+**Responsible for:**
+
+* **Calculating scores**
+* **Calculating percentages**
+* **Storing results**
+* **Displaying student results**
+* **Generating performance information**
+
+**### 5. Admin Panel**
+
+**Provides centralized control over:**
+
+* **Users**
+* **Quizzes**
+* **Questions**
+* **Results**
+* **System statistics**
+
+---
+
+**# 3. Class Structure**
+
+**## User**
+
+**`User` is an abstract base class shared by Student and Admin.**
+
+**### Attributes**
+
+* **userId**
+* **name**
+* **email**
+* **password**
+* **role**
+
+**### Methods**
+
+* **register()**
+* **login()**
+* **logout()**
+* **updateProfile()**
+* **viewDashboard()**
+
+---
+
+**## Student**
+
+**`Student` extends `User`.**
+
+**### Attributes**
+
+* **enrollmentNo**
+* **attemptedQuizzes**
+
+**### Responsibilities**
+
+* **View student dashboard**
+* **Attempt quizzes**
+* **View results**
+
+---
+
+**## Admin**
+
+**`Admin` extends `User`.**
+
+**### Attributes**
+
+* **adminId**
+* **managedQuizzes**
+
+**### Responsibilities**
+
+* **Manage users**
+* **Manage quizzes**
+* **Manage questions**
+* **View all results**
+* **View system statistics**
+
+---
+
+**## Quiz**
+
+**The `Quiz` class represents a quiz in the system.**
+
+**### Attributes**
+
+* **quizId**
+* **title**
+* **category**
+* **durationMinutes**
+* **totalMarks**
+* **questionList**
+* **isActive**
+
+**### Responsibilities**
+
+* **Create quiz**
+* **Edit quiz**
+* **Delete quiz**
+* **Add questions**
+* **Start quiz**
+* **Submit quiz**
+
+---
+
+**## Question**
+
+**`Question` is an abstract class used as the base class for different question types.**
+
+**### Attributes**
+
+* **questionId**
+* **questionText**
+* **marks**
+* **difficulty**
+
+**### Responsibilities**
+
+* **Store question information**
+* **Check answers**
+* **Add questions**
+* **Edit questions**
+* **Delete questions**
+
+---
+
+**## MCQQuestion**
+
+**`MCQQuestion` extends `Question`.**
+
+**### Attributes**
+
+* **optionA**
+* **optionB**
+* **optionC**
+* **optionD**
+* **correctOption**
+
+**### Responsibility**
+
+**The `checkAnswer()` method compares the student's selected option with the correct option.**
+
+---
+
+**## Result**
+
+**The `Result` class represents the outcome of a student's quiz attempt.**
+
+**### Attributes**
+
+* **resultId**
+* **studentId**
+* **quizId**
+* **scoreObtained**
+* **totalMarks**
+* **percentage**
+* **dateAttempted**
+
+**### Responsibilities**
+
+* **Calculate score**
+* **Calculate percentage**
+* **Store result**
+* **Display result**
+* **Generate performance information**
+
+---
+
+**# 4. OOP Concepts Used**
+
+**## Encapsulation**
+
+**Class attributes are kept private and accessed through appropriate methods.**
+
+**Examples:**
+
+```java
+private int userId;
+private String name;
+private String email;
+private String password;
+
+```
+
+**## Inheritance**
+
+**The system uses inheritance to create specialized classes from common base classes.**
+
+```
+User
+├── Student
+└── Admin
+
+```
+
+**and:**
+
+```
+Question
+└── MCQQuestion
+
+```
+
+**This reduces code duplication and represents an "is-a" relationship.**
+
+**## Abstraction**
+
+**User and Question are abstract classes.**
+
+**They define common behavior while allowing subclasses to provide their own implementations.**
+
+**For example:**
+
+```java
+abstract void viewDashboard();
+
+```
+
+**and:**
+
+```java
+abstract boolean checkAnswer(String response);
+
+```
+
+**## Polymorphism**
+
+**Polymorphism allows the same method to behave differently depending on the object.**
+
+**For example:**
+
+```
+User
+ ├── Student → viewDashboard()
+ └── Admin   → viewDashboard()
+
+```
+
+**Similarly:**
+
+```
+Question
+ └── MCQQuestion → checkAnswer()
+
+```
+
+**The project design specifically applies polymorphism to viewDashboard() and checkAnswer().**
+
+---
+
+**# 5. System Flow**
+
+**## Student Flow**
+
+```
+Student Registration
+        ↓
+Student Login
+        ↓
+Student Dashboard
+        ↓
+Select Quiz
+        ↓
+Start Quiz
+        ↓
+Answer Questions
+        ↓
+Submit Quiz
+        ↓
+Calculate Score
+        ↓
+Generate Result
+        ↓
+View Result
+
+```
+
+**## Admin Flow**
+
+```
+Admin Login
+      ↓
+Admin Dashboard
+      ↓
+Manage Users
+      ↓
+Manage Quizzes
+      ↓
+Manage Questions
+      ↓
+View Results
+
+```
+
+**The project design specifies that quiz submission passes the answers to Result Management, which evaluates each question through checkAnswer().**
+
+---
+
+**# 6. Module Interaction**
+
+**The major module interaction is:**
+
+```
+User Management
+       ↓
+Student / Admin
+       ↓
+Quiz Management
+       ↓
+Question Management
+       ↓
+Result Management
+
+```
+
+**The Admin Panel provides centralized access to the management modules.**
+
+---
+
+**# 7. Project Structure**
+
+```
+Java-projectOnlineQuizSystem/
+│
+├── README.md
+│
+├── Module-1-User-Management/
+│
+├── Module-2-Quiz-Management/
+│
+└── src/
+    └── onlinequiz/
+        ├── Main.java
+        ├── User.java
+        ├── Student.java
+        ├── Admin.java
+        ├── Quiz.java
+        ├── Question.java
+        ├── MCQQuestion.java
+        └── Result.java
+
+```
+
+---
+
+**# 8. Technologies**
+
+* **Java**
+* **Object-Oriented Programming**
+* **Java Collections**
+* **Java Scanner**
+* **Command Line Interface**
+
+---
+
+**# 9. Compilation**
+
+**Open the terminal inside the src directory.**
+
+**Compile:**
+
+```bash
+javac onlinequiz/*.java
+
+```
+
+**Run:**
+
+```bash
+java onlinequiz.Main
+
+```
+
+---
+
+**# 10. Learning Outcomes**
+
+**This project demonstrates practical understanding of:**
+
+* **Classes and objects**
+* **Constructors**
+* **Access modifiers**
+* **Encapsulation**
+* **Inheritance**
+* **Abstract classes**
+* **Method overriding**
+* **Polymorphism**
+* **Collections**
+* **Exception/input handling**
+* **Modular software design**
+
+---
+
+**# 11. Future Scope**
+
+**Possible future improvements include:**
+
+* **Database integration**
+* **Graphical user interface**
+* **Web-based frontend**
+* **Secure authentication**
+* **Additional question types**
+* **Persistent result storage**
+* **Advanced analytics**
+* **Randomized questions**
+* **Online deployment**
+
+---
+
+**# 12. Conclusion**
+
+**The Online Quiz System demonstrates how Object-Oriented Programming principles can be applied to develop a modular quiz management application.**
+
+**The system separates user management, quiz management, question management, result management and administration into logical components, making the project easier to understand, maintain and extend.**
